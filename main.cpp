@@ -9,8 +9,8 @@ public:
     bool nextState;
 };
 
-const int sizeX = 6;
-const int sizeY = 6;
+const int sizeX = 25;
+const int sizeY = 20;
 cell grid[sizeX*sizeY];
 
 int getNrOfLiveNeighbours(int x, int y) {
@@ -64,8 +64,8 @@ int getNrOfLiveNeighbours(int x, int y) {
     return result;
 }
 
-void printGrid() {
-    unsigned int microseconds = 500000;
+void printGrid(int count) {
+    unsigned int microseconds = 200000;
     usleep(microseconds);
     std::cout<<"\033[2J\033[1;1H";
     for (int y = 0; y < sizeY; ++y) {
@@ -78,7 +78,7 @@ void printGrid() {
         }
         std::cout<<std::endl;
     }
-    std::cout<<std::endl;
+    std::cout<<count<<std::endl;
 }
 int main() {
     //initGrid
@@ -111,15 +111,36 @@ int main() {
     grid[4*sizeX+3].state = 1;
     grid[4*sizeX+4].state = 1;
     printGrid();*/
+
     //glider 6x6
-    grid[0*sizeX+2].state = 1;
-    grid[1*sizeX+2].state = 1;
-    grid[2*sizeX+2].state = 1;
-    grid[2*sizeX+1].state = 1;
-    grid[1*sizeX+0].state = 1;
-    printGrid();
+
+    grid[2*sizeX+4].state = 1;
+    grid[3*sizeX+4].state = 1;
+    grid[4*sizeX+4].state = 1;
+    grid[4*sizeX+3].state = 1;
+    grid[3*sizeX+2].state = 1;
+
+    grid[2*sizeX+(sizeX-5)].state = 1;
+    grid[3*sizeX+(sizeX-5)].state = 1;
+    grid[4*sizeX+(sizeX-5)].state = 1;
+    grid[4*sizeX+(sizeX-4)].state = 1;
+    grid[3*sizeX+(sizeX-3)].state = 1;
+
+    grid[(sizeY-1)*sizeX+(sizeX-5)].state = 1;
+    grid[(sizeY-2)*sizeX+(sizeX-5)].state = 1;
+    grid[(sizeY-3)*sizeX+(sizeX-5)].state = 1;
+    grid[(sizeY-3)*sizeX+(sizeX-4)].state = 1;
+    grid[(sizeY-2)*sizeX+(sizeX-3)].state = 1;
+
+    grid[(sizeY-1)*sizeX+4].state = 1;
+    grid[(sizeY-2)*sizeX+4].state = 1;
+    grid[(sizeY-3)*sizeX+4].state = 1;
+    grid[(sizeY-3)*sizeX+3].state = 1;
+    grid[(sizeY-2)*sizeX+2].state = 1;
+
+    printGrid(0);
     //step
-    for (int count = 0; count < 100; ++count) {
+    for (int count = 0; count < 70; ++count) {
         for (int y = 0; y < sizeY; ++y) {
             for (int x = 0;x < sizeX; ++x) {
                 int nrOfLiveNeighbours = getNrOfLiveNeighbours(x, y);
@@ -137,7 +158,7 @@ int main() {
                 grid[nextY * sizeX + nextX].state = grid[nextY * sizeX + nextX].nextState;
             }
         }
-        printGrid();
+        printGrid(count);
     }
     return 0;
 }
