@@ -55,12 +55,20 @@ int main() {
             grid[y*sizeX+x].nextState = 0;
         }
     }
-/*  //blinker 5x5
+    /*//blinker 5x5
     grid[2*sizeX+1].state = 1;
     grid[2*sizeX+2].state = 1;
     grid[2*sizeX+3].state = 1;
     printGrid();*/
-    //beacon 6x6
+    //toad 6x6
+    grid[2*sizeX+2].state = 1;
+    grid[2*sizeX+3].state = 1;
+    grid[2*sizeX+4].state = 1;
+    grid[3*sizeX+1].state = 1;
+    grid[3*sizeX+2].state = 1;
+    grid[3*sizeX+3].state = 1;
+    printGrid();
+    /*//beacon 6x6
     grid[1*sizeX+1].state = 1;
     grid[1*sizeX+2].state = 1;
     grid[2*sizeX+1].state = 1;
@@ -69,7 +77,7 @@ int main() {
     grid[3*sizeX+4].state = 1;
     grid[4*sizeX+3].state = 1;
     grid[4*sizeX+4].state = 1;
-    printGrid();
+    printGrid();*/
     //step
     for (int count = 0; count < 10; ++count) {
         for (int y = 0; y < sizeY; ++y) {
