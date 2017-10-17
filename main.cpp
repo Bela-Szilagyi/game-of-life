@@ -1,4 +1,5 @@
 #include <iostream>
+#include <zconf.h>
 
 class cell {
 public:
@@ -64,6 +65,9 @@ int getNrOfLiveNeighbours(int x, int y) {
 }
 
 void printGrid() {
+    unsigned int microseconds = 500000;
+    usleep(microseconds);
+    std::cout<<"\033[2J\033[1;1H";
     for (int y = 0; y < sizeY; ++y) {
         for (int x = 0; x < sizeX; ++x) {
             if (grid[y*sizeX+x].state == 0) {
@@ -115,7 +119,7 @@ int main() {
     grid[1*sizeX+0].state = 1;
     printGrid();
     //step
-    for (int count = 0; count < 30; ++count) {
+    for (int count = 0; count < 100; ++count) {
         for (int y = 0; y < sizeY; ++y) {
             for (int x = 0;x < sizeX; ++x) {
                 int nrOfLiveNeighbours = getNrOfLiveNeighbours(x, y);
