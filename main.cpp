@@ -8,8 +8,8 @@ public:
     bool nextState;
 };
 
-const int sizeX = 5;
-const int sizeY = 5;
+const int sizeX = 6;
+const int sizeY = 6;
 cell grid[sizeX*sizeY];
 
 int getNrOfLiveNeighbours(int x, int y) {
@@ -55,10 +55,20 @@ int main() {
             grid[y*sizeX+x].nextState = 0;
         }
     }
-    //blinker
+/*  //blinker 5x5
     grid[2*sizeX+1].state = 1;
     grid[2*sizeX+2].state = 1;
     grid[2*sizeX+3].state = 1;
+    printGrid();*/
+    //beacon 6x6
+    grid[1*sizeX+1].state = 1;
+    grid[1*sizeX+2].state = 1;
+    grid[2*sizeX+1].state = 1;
+    grid[2*sizeX+2].state = 1;
+    grid[3*sizeX+3].state = 1;
+    grid[3*sizeX+4].state = 1;
+    grid[4*sizeX+3].state = 1;
+    grid[4*sizeX+4].state = 1;
     printGrid();
     //step
     for (int count = 0; count < 10; ++count) {
